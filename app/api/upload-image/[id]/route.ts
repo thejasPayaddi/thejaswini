@@ -5,7 +5,7 @@ import { NextResponse,NextRequest } from "next/server";
 
 ConnectDB();
 export const DELETE =async(req:NextRequest,ctx:{params:{id:string}})=>{
-    const imagepublicId =`nextjs-imagegallery/`+ ctx.params.id
+    const imagepublicId =`nextjs-image-gallery/`+ ctx.params.id
     const result_delete=await DeleteImage(imagepublicId);
 
     await ImageGalleryModel.findOneAndDelete({

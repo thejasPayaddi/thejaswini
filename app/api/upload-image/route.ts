@@ -18,7 +18,7 @@ export const POST= async(req:NextRequest)=>{
         image_url:data?.secure_url,
         public_id:data?.public_id,
     })
-    console.log({image})
+    // console.log({image})
     return NextResponse.json({msg:data},{
         status:200
     })

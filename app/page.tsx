@@ -4,11 +4,7 @@ import axios from 'axios';
 const page = () => {
   const[loading,setLoading]=useState(false);
   const [Image,setImage]= useState<File | null>(null);
-  const [images,setImages]=useState<{
-    image_url:string;
-    public_id:string;
-    _id:string
-  }[]>([]);
+  const [images,setImages]=useState<{image_url:string;public_id:string;id:string}[]>([]);
 
   const onChangeHandler = (e:ChangeEvent<HTMLInputElement>)=>{
     if(e.target.files){
@@ -40,16 +36,13 @@ const page = () => {
     }
   }
   const deleteImage = async(e:string)=>{
-    setLoading(true)
     try {
-      const {data}=await axios.delete("/api/upload-image/"+e.replace("nextjs-imagegallery/",""));
+      const {data}=await axios.delete("/api/upload-image/"+e.replace("nextjs-image-gallery/",""));
       await FetchAllImage();
       console.log({data})
       
     } catch (error:any) {
       console.log("Error",error.message);
-    }finally{
-      setLoading(false);
     }
   }
   useEffect(()=>{
